@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'reactstrap';
+import Locations from './Locations';
 
-function Features(props) {
-  const { features } = props;
+function Feature(props) {
+  const { feature, locations } = props;
   return (
-    <Row>
+    <Row className="mt-3">
       <Col>
-        <h3>Features</h3>
-        {
-          features.map(feature =>
-            <Feature feature={feature} />
-          )}
+        <h5>{feature.title}</h5>
+        <Locations locations={locations}/>
       </Col>
     </Row>
   );
 }
 
-Features.propTypes = {
-  features: PropTypes.array.isRequired
+Feature.propTypes = {
+  feature: PropTypes.object.isRequired,
+  locations: PropTypes.array.isRequired
 };
 
-export default Features;
+export default Feature;

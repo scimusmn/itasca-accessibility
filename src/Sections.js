@@ -5,6 +5,13 @@ import Features from './Features';
 import features from './features.json';
 
 function Sections(props) {
+  const sections = [
+    { slug: 'trails', title: 'Trails', },
+    { slug: 'interest-point', title: 'Points of Interest', },
+    { slug: 'camping-lodging', title: 'Camping / Lodging', },
+    { slug: 'recreation', title: 'Recreation', },
+    { slug: 'other', title: 'Other', },
+  ];
   const sectionFeatures = ((type) => {
     return _.filter(features, function(o) {
       return o.type === type;
@@ -18,28 +25,35 @@ function Sections(props) {
           <h3>Sections</h3>
         </Col>
       </Row>
+
+      {/* Table of contents */}
       <Row>
-        <Col>
-          <h4>Trails</h4>
-          <Features features={sectionFeatures('trails')} />
-        </Col>
-        <Col>
-          <h4>Points of Interest</h4>
-          <Features features={sectionFeatures('interest-point')} />
-        </Col>
-        <Col>
-          <h4>Camping/Lodging</h4>
-          <Features features={sectionFeatures('camping-lodging')} />
-        </Col>
-        <Col>
-          <h4>Recreation</h4>
-          <Features features={sectionFeatures('recreation')} />
-        </Col>
-        <Col>
-          <h4>Other Information</h4>
-          <Features features={sectionFeatures('other')} />
-        </Col>
+        {
+          sections.map(section =>
+            <Col key={section.slug} sm={12} md={12}>
+              <h4>
+                <a href={`#section-${section.slug}`}>{section.title}</a>
+              </h4>
+            </Col>
+          )
+        }
       </Row>
+
+      {/* Sections */}
+      {
+        sections.map(section =>
+          <Row className="mt-3" key={section.slug}>
+            <Col>
+              <hr />
+              <h4>
+                <a name={`section-${section.slug}`}>{section.title}</a>
+              </h4>
+              <Features features={sectionFeatures(section.slug)} />
+            </Col>
+          </Row>
+        )
+      }
+
     </Fragment>
   );
 }
