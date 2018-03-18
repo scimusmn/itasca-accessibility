@@ -5,10 +5,22 @@ import Locations from './Locations';
 
 function Feature(props) {
   const { feature, locations } = props;
+  const cleanTitle = (title) => {
+    // Hack
+    let cleanTitle = title.replace('A Fishing Supplies', 'Fishing Supplies');
+    cleanTitle = cleanTitle.replace('Interp---', 'Interpretive Centers - ');
+    cleanTitle = cleanTitle.replace('Info---', 'Information and Permits - ');
+    cleanTitle = cleanTitle.replace('Gift---', 'Gift Shops - ');
+    cleanTitle = cleanTitle.replace('Equip---', 'Equipment Rental - ');
+    cleanTitle = cleanTitle.replace('Winter---', 'Winter Sports - ');
+    cleanTitle = cleanTitle.replace('---', ' - ');
+    return cleanTitle;
+  }
+
   return (
     <Row className="mt-3">
       <Col>
-        <h5>{feature.title}</h5>
+        <h5>{cleanTitle(feature.title)}</h5>
         <Locations locations={locations}/>
       </Col>
     </Row>
