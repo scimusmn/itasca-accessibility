@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Col, Container, Jumbotron, Row } from 'reactstrap';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Sections from './Sections';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <Jumbotron>
+              <h1 className="display-3">Itasca State Park - Park Map</h1>
+              <h2>Text description site</h2>
+            </Jumbotron>
+          </Col>
+        </Row>
+        <Sections />
+      </Container>
     );
   }
 }
