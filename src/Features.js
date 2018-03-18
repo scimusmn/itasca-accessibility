@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'reactstrap';
-import _ from 'lodash';
+import filter from 'lodash.filter';
 import Feature from './Feature';
 import locations from './locations.json';
 
 function Features(props) {
   const { features } = props;
   const featureLocations = (featureId) => {
-    return _.filter(locations, function(o) {
+    return filter(locations, function(o) {
       return o.featureId === featureId;
     });
   };

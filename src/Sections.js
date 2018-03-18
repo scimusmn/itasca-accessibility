@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import _ from 'lodash';
-import { Col, Row } from 'reactstrap';
+import filter from 'lodash.filter';
+import { Card, CardBody, CardTitle, Col, Row } from 'reactstrap';
 import Features from './Features';
 import features from './features.json';
 
@@ -13,31 +13,36 @@ function Sections(props) {
     { slug: 'other', title: 'Other', },
   ];
   const sectionFeatures = ((type) => {
-    return _.filter(features, function(o) {
+    return filter(features, function(o) {
       return o.type === type;
     });
   });
 
   return (
     <Fragment>
-      <Row>
-        <Col>
-          <h3>Sections</h3>
-        </Col>
-      </Row>
 
       {/* Table of contents */}
       <Row>
-        {
-          sections.map(section =>
-            <Col key={section.slug} sm={12} md={12}>
-              <h4>
-                <a href={`#section-${section.slug}`}>{section.title}</a>
-              </h4>
-            </Col>
-          )
-        }
+        <Col>
+          <Card>
+            <CardBody>
+              <CardTitle>Table of Contents</CardTitle>
+              <Row>
+                {
+                  sections.map(section =>
+                    <Col key={section.slug} sm={12} md={12}>
+                      <h5>
+                        <a href={`#section-${section.slug}`}>{section.title}</a>
+                      </h5>
+                    </Col>
+                  )
+                }
+              </Row>
+            </CardBody>
+          </Card>
+        </Col>
       </Row>
+
 
       {/* Sections */}
       {
