@@ -20,7 +20,7 @@ function Feature(props) {
   return (
     <Row className="mt-3">
       <Col>
-        <h5>{cleanTitle(feature.title)}</h5>
+        <h3>{cleanTitle(feature.title)}</h3>
         <Locations locations={locations}/>
       </Col>
     </Row>

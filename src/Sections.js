@@ -31,9 +31,9 @@ function Sections(props) {
                 {
                   sections.map(section =>
                     <Col key={section.slug} sm={12} md={12}>
-                      <h5>
+                      <h3>
                         <a href={`#section-${section.slug}`}>{section.title}</a>
-                      </h5>
+                      </h3>
                     </Col>
                   )
                 }
@@ -50,9 +50,9 @@ function Sections(props) {
           <Row className="mt-3" key={section.slug}>
             <Col>
               <hr />
-              <h4>
+              <h2>
                 <a name={`section-${section.slug}`}>{section.title}</a>
-              </h4>
+              </h2>
               <Features features={sectionFeatures(section.slug)} />
             </Col>
           </Row>
